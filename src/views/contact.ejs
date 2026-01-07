@@ -1,0 +1,21 @@
+<main>
+  <h1>Contacto</h1>
+
+  <form action="/api/contact" method="post">
+    <div>
+      <label for="name">Nombre</label>
+      <input type="text" name="name" id="name" />
+    </div>
+    <div>
+      <label for="email">Correo Electrónico: </label>
+      <input type="email" name="email" id="email" />
+    </div>
+
+    <div>
+      <label for="message">Mensaje: </label>
+      <textarea name="message" id="message" rows="10"></textarea>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</main>
