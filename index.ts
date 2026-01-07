@@ -2,8 +2,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import mainRouter from "./src/routes/main.router";
-import rickAndMortyRouter from "./src/routes/rickAndMorty.router";
+import mainRouter from "./src/routes/main.router.js";
+import rickAndMortyRouter from "./src/routes/rickAndMorty.router.js";
 import path from "node:path";
 import expressEjsLayouts from "express-ejs-layouts";
 

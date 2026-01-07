@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import axios from "axios";
-import {CharactersResponse} from "../types/rickAndMortyDates.types";
+import {CharactersResponse} from "../types/rickAndMortyDates.types.js";
 //import * as querystring from "node:querystring";
 
 

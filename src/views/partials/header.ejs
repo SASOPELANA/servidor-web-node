@@ -1,94 +1,208 @@
-<header>
+<header
+  class="relative overflow-hidden bg-slate-950 text-slate-50 border-t border-2 border-green-500/20"
+>
+  <!-- Background Decor -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-green-500/10 rounded-full blur-[120px]"
+    ></div>
+    <div
+      class="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-blue-500/10 rounded-full blur-[100px]"
+    ></div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-gray-300 backdrop-blur-md z-50 ">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="status-indicator"></div>
-                    <span class="code-font text-green-500">&lt;ApisRest/&gt;</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="/" class="hover:text-green-400 transition-colors">Inicio</a>
-                    <a href="/api/characters" class="hover:text-green-400 transition-colors">Características</a>
-                    <a href="#" class="hover:text-green-400 transition-colors">Nosotros</a>
-                    <!--
-                      <a href="#projects" class="hover:text-green-400 transition-colors">Projects</a>
-                      <a href="#skills" class="hover:text-green-400 transition-colors">Skills</a>
-                      <a href="#contact" class="hover:text-green-400 transition-colors">Contact</a>
-                      -->
-                </div>
-                <button class="md:hidden text-xl" onclick="toggleMobileMenu()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M4 6l16 0"/>
-                        <path d="M4 12l16 0"/>
-                        <path d="M4 18l16 0"/>
-                    </svg>
-                </button>
-            </div>
+  <!-- Navigation -->
+  <nav
+    class="fixed top-0 w-full bg-slate-950/40 backdrop-blur-xl z-50 border-b border-white/5 transition-all duration-300"
+  >
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3 group cursor-pointer">
+          <div
+            class="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.6)]"
+          ></div>
+          <span
+            class="font-mono text-xl font-bold tracking-tighter bg-linear-to-r from-green-400 via-emerald-400 to-blue-400 bg-clip-text text-transparent group-hover:from-blue-400 group-hover:to-green-400 transition-all duration-500"
+          >
+            &lt;ApisRest/&gt;
+          </span>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-gray-300 backdrop-blur-md">
-            <div class="px-6 py-4 space-y-4">
-                <a href="/" class="block hover:text-green-400 transition-colors">Inicio</a>
-                <a href="/api/characters" class="block hover:text-green-400 transition-colors">Características</a>
-                <a href="#" class="block hover:text-green-400 transition-colors">Nosotros</a>
-                <!--
-              <a href="#projects" class="block hover:text-green-400 transition-colors">Projects</a>
-                <a href="#skills" class="block hover:text-green-400 transition-colors">Skills</a>
-                <a href="#contact" class="block hover:text-green-400 transition-colors">Contact</a>
-                -->
-            </div>
+
+        <div class="flex items-center space-x-10">
+          <div class="hidden md:flex items-center gap-10">
+            <a
+              href="/"
+              class="text-sm font-medium text-slate-300 hover:text-green-400 transition-colors relative group py-1"
+            >
+              Inicio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/api/characters"
+              class="text-sm font-medium text-slate-300 hover:text-green-400 transition-colors relative group py-1"
+            >
+              Características
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="#"
+              class="text-sm font-medium text-slate-300 hover:text-green-400 transition-colors relative group py-1"
+            >
+              Nosotros
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </div>
+
+          <div class="flex items-center">
+            <button
+              class="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              onclick="toggleMobileMenu()"
+            >
+              <svg
+                id="menuIcon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+            </button>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section min-h-screen flex items-center justify-center relative bg-gray-900/80">
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
+    >
+      <div class="px-6 py-8 space-y-6">
+        <a
+          href="/"
+          class="block text-lg font-medium text-slate-200 hover:text-green-400 transition-colors"
+          >Inicio</a
+        >
+        <a
+          href="/api/characters"
+          class="block text-lg font-medium text-slate-200 hover:text-green-400 transition-colors"
+          >Características</a
+        >
+        <a
+          href="#"
+          class="block text-lg font-medium text-slate-200 hover:text-green-400 transition-colors"
+          >Nosotros</a
+        >
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section
+    id="home"
+    class="relative min-h-screen flex items-center justify-center pt-20"
+  >
+    <div class="container mx-auto px-6 z-10">
+      <div class="flex flex-col items-center text-center">
+        <div
+          class="mb-8 inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-green-500 animate-ping"
+          ></span>
+          <span
+            class="text-green-400 text-xs font-mono font-semibold uppercase tracking-widest"
+            >Desarrollo Backend</span
+          >
+        </div>
 
-        <div class="text-center z-10 max-w-4xl mx-auto px-6">
-            <div class="mb-6">
-                <span class="code-font text-green-400 text-lg">&lt;api&gt;</span>
-            </div>
-            <h1 class="text-6xl md:text-8xl font-bold mb-6">
-                <span class="gradient-text">Node.js</span><br>
-                <span class="neon-glow">Express</span>
-            </h1>
-            <div class="mb-6">
-                <span class="code-font text-green-400 text-lg">&lt;/api&gt;</span>
-            </div>
+        <div class="space-y-4 mb-10">
+          <h1
+            class="text-7xl md:text-9xl font-black tracking-tight leading-none"
+          >
+            <span
+              class="inline-block bg-linear-to-b from-white to-slate-400 bg-clip-text text-transparent"
+              >Node.js</span
+            >
+            <br />
+            <span class="inline-block relative">
+              <span
+                class="bg-linear-to-r from-blue-400 via-emerald-400 to-green-400 bg-clip-text text-transparent"
+                >Express</span
+              >
+              <span
+                class="absolute -bottom-2 left-0 w-full h-1 bg-linear-to-r from-blue-400/50 via-emerald-400/50 to-green-400/50 blur-sm"
+              ></span>
+            </span>
+          </h1>
+        </div>
 
-            <div class="code-font text-xl md:text-2xl mb-8 text-gray-300">
-                <span id="typingText" class="typing-animation">Api Rest con Node.js, Express y Typescript</span>
-            </div>
-
-            <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-                Enfocado en desarrollar Api Rest robustas con Node.js, Express y TypeScript, creando aplicaciones
-                con vistas dinámicas y funcionales. En constante aprendizaje de las mejores prácticas de desarrollo y
-                tecnologías modernas.
+        <div class="max-w-2xl mx-auto space-y-8">
+          <div
+            class="inline-block rounded-xl bg-white/5 border border-white/10 p-4 md:p-6 backdrop-blur-sm shadow-2xl"
+          >
+            <p
+              id="typingText"
+              class="font-mono text-xl md:text-2xl text-green-400 tracking-tight"
+            >
+              Api Rest con Node.js, Express y Typescript
             </p>
+          </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#projects" target="_blank" rel="noopener noreferrer"
-                   class="bg-gradient-to-r from-green-500 to-blue-500 px-8 py-4 rounded-full font-semibold hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-green-500/25">
-                    Ver el código
-                </a>
-                <a href="https://portafolio-web-tl1w.vercel.app/" target="_blank" rel="noopener noreferrer"
-                   class="border-2 border-green-400 px-8 py-4 rounded-full font-semibold hover:bg-green-400/10 transition-all duration-300">
-                    Contacto
-                </a>
-            </div>
+          <p
+            class="text-lg md:text-xl text-slate-400 leading-relaxed font-light"
+          >
+            Enfocado en desarrollar Api Rest robustas con Node.js, Express y
+            TypeScript, creando aplicaciones con vistas dinámicas y funcionales.
+            En constante aprendizaje de las mejores prácticas de desarrollo y
+            tecnologías modernas.
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row gap-6 justify-center pt-6 mb-10"
+          >
+            <a
+              href="https://github.com/SASOPELANA/servidor-web-node"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative px-8 py-4 bg-green-500 text-slate-950 font-bold rounded-xl overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 hover:-translate-y-1"
+            >
+              <span class="relative z-10 flex items-center justify-center">
+                Ver Proyecto
+              </span>
+            </a>
+            <a
+              href="https://portafolio-web-tl1w.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-4 border border-white/10 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1"
+            >
+              Contacto
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </header>
 
 <script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("hidden");
-    }
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("hidden");
+  }
 </script>
-
