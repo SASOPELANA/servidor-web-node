@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-
 dotenv.config();
 
 import mainRouter from "./src/routes/main.router.js";
@@ -17,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static(path.join(process.cwd(), "public")));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "src/views"));
@@ -32,5 +31,5 @@ app.use("/api/location", locationRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
+  console.log(`http://localhost:${PORT}`);
 });

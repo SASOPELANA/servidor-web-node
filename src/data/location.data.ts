@@ -1,0 +1,50 @@
+import { Location } from "../types/location.types.js";
+
+export const locations: Location[] = [
+  {
+    id: 1,
+    name: "Earth (C-137)",
+    type: "Planet",
+    dimension: "Dimension C-137",
+    residents: [
+      "https://rickandmortyapi.com/api/character/38",
+      "https://rickandmortyapi.com/api/character/45",
+      "https://rickandmortyapi.com/api/character/71",
+      "https://rickandmortyapi.com/api/character/82",
+      "https://rickandmortyapi.com/api/character/83",
+      "https://rickandmortyapi.com/api/character/92",
+      "https://rickandmortyapi.com/api/character/112",
+      "https://rickandmortyapi.com/api/character/114",
+    ],
+    url: "https://rickandmortyapi.com/api/location/1",
+    created: "2017-11-10T12:42:04.162Z",
+  },
+  {
+    id: 2,
+    name: "Abadango",
+    type: "Cluster",
+    dimension: "unknown",
+    residents: ["https://rickandmortyapi.com/api/character/6"],
+    url: "https://rickandmortyapi.com/api/location/2",
+    created: "2017-11-10T13:06:38.182Z",
+  },
+  {
+    id: 3,
+    name: "Worldender's lair",
+    type: "Planet",
+    dimension: "unknown",
+    residents: [
+      "https://rickandmortyapi.com/api/character/10",
+      "https://rickandmortyapi.com/api/character/81",
+      "https://rickandmortyapi.com/api/character/208",
+      "https://rickandmortyapi.com/api/character/226",
+      "https://rickandmortyapi.com/api/character/340",
+      "https://rickandmortyapi.com/api/character/362",
+      "https://rickandmortyapi.com/api/character/375",
+      "https://rickandmortyapi.com/api/character/382",
+      "https://rickandmortyapi.com/api/character/395",
+    ],
+    url: "https://rickandmortyapi.com/api/location/4",
+    created: "2017-11-10T13:08:20.569Z",
+  },
+];

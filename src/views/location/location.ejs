@@ -1,5 +1,28 @@
 <h1>Lista de Localizaciones</h1>
 <p>
-    Esto es una lista de todas las galaxias y lugares del sistema del
-    universo.
+  Esto es una lista de todas las galaxias y lugares del sistema del universo.
 </p>
+
+<a href="/api/location/create">Crear una nueva localización. </a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% locations.forEach(location => { %>
+
+    <tr>
+      <td>
+        <a href="/api/location/<%= location.id %>"> <%= location.id %></a>
+      </td>
+      <td>
+        <a href="/api/location/<%= location.id %>"> <%= location.name %></a>
+      </td>
+    </tr>
+
+    <% }); %>
+  </tbody>
+</table>

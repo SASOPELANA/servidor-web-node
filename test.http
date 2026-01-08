@@ -7,8 +7,8 @@ GET localhost:3000/api/characters
 ### GET ID
 GET http://localhost:3000/api/characters/8
 
-### GET seacrh and query
-GET localhost:3000/api/characters?species=humanoid
+### GET search and query
+GET http://localhost:3000/api/characters?species=humanoid
 
-### GET species
-GET localhost:3000/api/location
+### GET location by id
+GET http://localhost:3000/api/location/4
