@@ -1,114 +1,119 @@
 <main class="min-h-screen bg-slate-950 pt-24 pb-24 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-6">
-    <!-- Section Header -->
-    <div class="mb-16 text-center">
-      <h1
-        class="text-4xl md:text-5xl font-black bg-linear-to-r from-white via-slate-200 to-green-400 bg-clip-text text-transparent mb-4"
-      >
-        Personajes - Características
-      </h1>
-      <div class="mt-4 flex justify-center">
-        <div
-          class="h-1 w-24 bg-linear-to-r from-green-500 to-blue-500 rounded-full"
-        ></div>
-      </div>
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="mb-16 text-center">
+            <h1
+                class="text-4xl md:text-5xl font-black bg-linear-to-r from-white via-slate-200 to-green-400 bg-clip-text text-transparent mb-4"
+            >
+                Personajes - Características
+            </h1>
+            <div class="mt-4 flex justify-center">
+                <div
+                    class="h-1 w-24 bg-linear-to-r from-green-500 to-blue-500 rounded-full"
+                ></div>
+            </div>
+        </div>
+
+        <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <% characters.results.forEach(character => { %>
+            <li
+                class="group relative flex flex-col bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm shadow-2xl"
+            >
+                <!-- Character Image Section -->
+                <div class="relative overflow-hidden aspect-square">
+                    <img
+                        class="w-full h-full object-contain"
+                        src="<%= character.image %>"
+                        alt="<%= character.name %>"
+                        loading="lazy"
+                    />
+                    <div
+                        class="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60"
+                    ></div>
+
+                    <!-- ID Badge -->
+                    <div
+                        class="absolute top-4 right-4 px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-full text-xs font-mono text-green-400"
+                    >
+                        N°
+                        <%= character.id %>
+                    </div>
+
+                    <!-- Status Badge -->
+                    <div
+                        class="absolute bottom-4 left-4 flex items-center space-x-2"
+                    >
+                        <span
+                            class="flex h-2 w-2 rounded-full <%= character.status === 'Alive' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : character.status === 'Dead' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'bg-gray-400' %>"
+                        ></span>
+                        <span
+                            class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-md"
+                        >
+                            <%= character.status %>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Character Info Section -->
+                <div class="flex flex-col gap-4 p-6">
+                    <div class="min-h-12">
+                        <h2
+                            class="text-2xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2"
+                        >
+                            <%= character.name %>
+                        </h2>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex flex-col text-sm">
+                            <span
+                                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
+                                >Especie</span
+                            >
+                            <span class="text-slate-200"
+                                ><%= character.species %></span
+                            >
+                        </div>
+
+                        <div class="flex flex-col text-sm">
+                            <span
+                                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
+                                >Origen</span
+                            >
+                            <span class="text-slate-200 line-clamp-1"
+                                ><%= character.origin.name %></span
+                            >
+                        </div>
+
+                        <div class="flex flex-col text-sm">
+                            <span
+                                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
+                                >Localización</span
+                            >
+                            <span class="text-slate-200 line-clamp-1"
+                                ><%= character.location.name %></span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decorative Shine -->
+                <div
+                    class="absolute -inset-x-full top-0 h-full w-1/2 z-5 bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:animate-shine"
+                ></div>
+            </li>
+            <% }) %>
+        </ul>
     </div>
-
-    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <% characters.results.forEach(character => { %>
-      <li
-        class="group relative flex flex-col bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm shadow-2xl"
-      >
-        <!-- Character Image Section -->
-        <div class="relative overflow-hidden aspect-square">
-          <img
-            class="w-full h-full object-contain"
-            src="<%= character.image %>"
-            alt="<%= character.name %>"
-            loading="lazy"
-          />
-          <div
-            class="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60"
-          ></div>
-
-          <!-- ID Badge -->
-          <div
-            class="absolute top-4 right-4 px-3 py-1 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-full text-xs font-mono text-green-400"
-          >
-            N° <%= character.id %>
-          </div>
-
-          <!-- Status Badge -->
-          <div class="absolute bottom-4 left-4 flex items-center space-x-2">
-            <span
-              class="flex h-2 w-2 rounded-full <%= character.status === 'Alive' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : character.status === 'Dead' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'bg-gray-400' %>"
-            ></span>
-            <span
-              class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-md"
-            >
-              <%= character.status %>
-            </span>
-          </div>
-        </div>
-
-        <!-- Character Info Section -->
-        <div class="flex flex-col gap-4 p-6">
-          <div class="min-h-12">
-            <h2
-              class="text-2xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2"
-            >
-              <%= character.name %>
-            </h2>
-          </div>
-
-          <div class="space-y-3">
-            <div class="flex flex-col text-sm">
-              <span
-                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
-                >Especie</span
-              >
-              <span class="text-slate-200"><%= character.species %></span>
-            </div>
-
-            <div class="flex flex-col text-sm">
-              <span
-                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
-                >Origen</span
-              >
-              <span class="text-slate-200 line-clamp-1"
-                ><%= character.origin.name %></span
-              >
-            </div>
-
-            <div class="flex flex-col text-sm">
-              <span
-                class="text-slate-500 uppercase text-[10px] font-bold tracking-widest"
-                >Localización</span
-              >
-              <span class="text-slate-200 line-clamp-1"
-                ><%= character.location.name %></span
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- Decorative Shine -->
-        <div
-          class="absolute -inset-x-full top-0 h-full w-1/2 z-5 bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:animate-shine"
-        ></div>
-      </li>
-      <% }) %>
-    </ul>
-  </div>
 </main>
 
 <style>
-  @keyframes shine {
-    100% {
-      left: 125%;
+    @keyframes shine {
+        100% {
+            left: 125%;
+        }
     }
-  }
-  .animate-shine {
-    animation: shine 1.5s ease-in-out infinite;
-  }
+    .animate-shine {
+        animation: shine 1.5s ease-in-out infinite;
+    }
 </style>

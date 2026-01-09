@@ -8,7 +8,8 @@ GET localhost:3000/api/characters
 GET http://localhost:3000/api/characters/8
 
 ### GET search and query
-GET http://localhost:3000/api/characters?species=humanoid
+GET http://localhost:3000/api/characters?
+    species=humanoid
 
 ### GET location by id
-GET http://localhost:3000/api/location/4
+GET http://localhost:3000/api/location/3

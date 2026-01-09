@@ -1,0 +1,15 @@
+<h1>Editar Localización</h1>
+
+<form action="/api/location/<%= resLocation.id %>?_method=PUT" method="post">
+    <div>
+        <label for="name">Nombre:</label>
+        <input
+            type="text"
+            name="name"
+            id="name"
+            value="<%= resLocation.name %>"
+            placeholder="Localization"
+        />
+    </div>
+    <button type="submit">Guardar</button>
+</form>
