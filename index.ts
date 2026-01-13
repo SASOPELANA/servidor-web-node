@@ -1,10 +1,10 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import mainRouter from './src/routes/main.router.js';
-import rickAndMortyRouter from './src/routes/rickAndMorty.router.js';
-import contact from './src/routes/contact.router.js';
-import locationRoute from './src/routes/location.route.js';
+import mainRouter from './src/routes/main.route.js';
+import rickAndMortyRouter from './src/routes/characters.route.js';
+import contact from './src/routes/contact.route.js';
+import locationRoute from './src/routes/laboratory.route.js';
 import path from 'node:path';
 import expressEjsLayouts from 'express-ejs-layouts';
 import methodOverride from 'method-override';
@@ -29,7 +29,7 @@ app.set('layout', 'layouts/layout');
 app.use(mainRouter);
 app.use('/api/characters', rickAndMortyRouter);
 app.use('/api/contact', contact);
-app.use('/api/location', locationRoute);
+app.use('/api/laboratory', locationRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

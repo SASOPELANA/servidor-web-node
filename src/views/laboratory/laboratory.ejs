@@ -1,0 +1,85 @@
+<div class="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div>
+        <h1 class="text-4xl md:text-5xl font-black bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent mb-2">
+            Laboratorio de Características
+        </h1>
+        <p class="text-slate-400 font-medium">
+            Gestiona y explora las características personalizadas en nuestra base de datos local.
+        </p>
+    </div>
+    
+    <a href="/api/laboratory/create" class="inline-flex items-center px-6 py-3 bg-green-500 text-slate-950 font-bold rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Nueva Característica
+    </a>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <% characters.forEach(character => { %>
+        <div class="group relative bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl">
+            <!-- Card Header/Image -->
+            <div class="aspect-video relative overflow-hidden bg-slate-800">
+                <% if (character.image) { %>
+                    <img src="<%= character.image %>" alt="<%= character.name %>" class="w-full h-full object-cover transition-transform duration-700 opacity-70 group-hover:opacity-100">
+                <% } else { %>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                <% } %>
+                <div class="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent"></div>
+                
+                <!-- Status Badge -->
+                <div class="absolute top-4 right-4">
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border border-white/10 <%= character.status === 'Alive' ? 'bg-green-500/20 text-green-400 border-green-500/30' : character.status === 'Dead' ? 'bg-red-500/20 text-red-400 border-red-400/30' : 'bg-slate-500/20 text-slate-400' %>">
+                        <%= character.status %>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6">
+                <div class="mb-4">
+                    <span class="text-xs font-mono text-green-500/70 mb-1 block">ID: #<%= character.id %></span>
+                    <h2 class="text-xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-1">
+                        <%= character.name %>
+                    </h2>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-white/5 mt-4">
+                    <div class="flex items-center gap-3">
+                        <a href="/api/laboratory/<%= character.id %>" class="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                            Detalles
+                        </a>
+                        <span class="text-slate-700">•</span>
+                        <a href="/api/laboratory/<%= character.id %>/edit" class="text-sm font-semibold text-slate-400 hover:text-green-400 transition-colors">
+                            Editar
+                        </a>
+                    </div>
+
+                    <form class="form-delete" action="/api/laboratory/<%= character.id %>?_method=DELETE" method="post">
+                        <button type="submit" class="p-2 text-slate-500 hover:text-red-500 transition-colors rounded-lg hover:bg-red-500/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<script>
+    document.addEventListener('submit', (event) => {
+        if (event.target.classList.contains('form-delete')) {
+            event.preventDefault();
+            if (confirm('¿Estás seguro de que deseas eliminar esta característica?')) {
+                event.target.submit();
+            }
+        }
+    });
+</script>

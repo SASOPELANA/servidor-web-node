@@ -1,21 +1,67 @@
-<main>
-    <h1>Contacto</h1>
+<div class="max-w-4xl mx-auto">
+    <div class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-black bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">
+            Contáctanos
+        </h1>
+        <p class="text-slate-400 max-w-xl mx-auto">
+            ¿Tienes alguna duda o sugerencia sobre nuestro rastreador o el laboratorio? Envíanos un mensaje y te responderemos lo antes posible.
+        </p>
+    </div>
 
-    <form action="/api/contact" method="post">
-        <div>
-            <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" />
-        </div>
-        <div>
-            <label for="email">Correo Electrónico: </label>
-            <input type="email" name="email" id="email" />
-        </div>
+    <div class="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+        <!-- Decoration Area -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-green-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div>
-            <label for="message">Mensaje: </label>
-            <textarea name="message" id="message" rows="10"></textarea>
-        </div>
+        <form id="contactForm" action="/api/contact" method="post" class="space-y-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-semibold text-slate-300">Tu Nombre</label>
+                    <input type="text" name="name" id="name" required placeholder="Ej: Morty Smith"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all placeholder:text-slate-600" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label for="email" class="block text-sm font-semibold text-slate-300">Correo Electrónico</label>
+                    <input type="email" name="email" id="email" required placeholder="morty@smith.com"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all placeholder:text-slate-600" />
+                </div>
+            </div>
 
-        <button type="submit">Enviar</button>
-    </form>
-</main>
+            <div class="space-y-2">
+                <label for="message" class="block text-sm font-semibold text-slate-300">Mensaje</label>
+                <textarea name="message" id="message" required rows="6" placeholder="Cuéntanos más..."
+                    class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all placeholder:text-slate-600 resize-none"></textarea>
+            </div>
+
+            <div class="flex justify-center pt-4">
+                <button type="submit" id="submitBtn" class="group relative px-12 py-4 bg-green-500 text-slate-950 font-bold rounded-xl overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="btnText" class="relative z-10 flex items-center justify-center">
+                        Enviar Mensaje
+                        <svg id="btnIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+
+    form.addEventListener('submit', () => {
+        btn.disabled = true;
+        btnText.innerHTML = `
+            <span>Enviando mensaje...</span>
+            <svg class="animate-spin h-5 w-5 ml-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        `;
+    });
+</script>

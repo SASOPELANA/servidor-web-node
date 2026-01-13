@@ -12,4 +12,4 @@ GET http://localhost:3000/api/characters?
     species=humanoid
 
 ### GET location by id
-GET http://localhost:3000/api/location/3
+GET http://localhost:3000/api/laboratory/3

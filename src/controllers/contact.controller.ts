@@ -35,7 +35,7 @@ const submit = async (req: Request, res: Response) => {
         console.error('Error: ', error);
     }
 
-    res.send('Enviando formulario de contacto');
+    res.redirect('/?success=true');
 };
 
 const controller = {

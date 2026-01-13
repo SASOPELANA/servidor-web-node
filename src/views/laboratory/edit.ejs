@@ -1,0 +1,159 @@
+<div class="max-w-4xl mx-auto">
+    <div class="mb-12">
+        <a href="/api/laboratory" class="inline-flex items-center text-slate-400 hover:text-green-400 transition-colors font-medium mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver a la lista
+        </a>
+        
+        <h1 class="text-4xl md:text-5xl font-black bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent mb-4">
+            Editar Característica
+        </h1>
+        <p class="text-slate-400">
+            Modifica los detalles del expediente para <span class="text-white font-bold"><%= resLocation.name %></span>.
+        </p>
+    </div>
+
+    <form action="/api/laboratory/<%= resLocation.id %>?_method=PUT" method="post" class="space-y-8">
+        <!-- Basic Information Section -->
+        <div class="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-sm">
+            <h2 class="text-xl font-bold text-white mb-8 flex items-center">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-3 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+                Información Básica
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-semibold text-slate-300">Nombre Completo</label>
+                    <input type="text" name="name" id="name" value="<%= resLocation.name %>" required
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label for="status" class="block text-sm font-semibold text-slate-300">Estado Vital</label>
+                    <div class="relative">
+                        <select name="status" id="status" 
+                            class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all appearance-none cursor-pointer">
+                            <option value="Alive" <%= resLocation.status === 'Alive' ? 'selected' : '' %> class="bg-slate-900">Alive</option>
+                            <option value="Dead" <%= resLocation.status === 'Dead' ? 'selected' : '' %> class="bg-slate-900">Dead</option>
+                            <option value="unknown" <%= resLocation.status === 'unknown' ? 'selected' : '' %> class="bg-slate-900">unknown</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="species" class="block text-sm font-semibold text-slate-300">Especie</label>
+                    <input type="text" name="species" id="species" value="<%= resLocation.species %>"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all" />
+                </div>
+
+                <div class="space-y-2">
+                    <label for="gender" class="block text-sm font-semibold text-slate-300">Género</label>
+                    <div class="relative">
+                        <select name="gender" id="gender"
+                            class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all appearance-none cursor-pointer">
+                            <option value="Female" <%= resLocation.gender === 'Female' ? 'selected' : '' %> class="bg-slate-900">Female</option>
+                            <option value="Male" <%= resLocation.gender === 'Male' ? 'selected' : '' %> class="bg-slate-900">Male</option>
+                            <option value="Genderless" <%= resLocation.gender === 'Genderless' ? 'selected' : '' %> class="bg-slate-900">Genderless</option>
+                            <option value="unknown" <%= resLocation.gender === 'unknown' ? 'selected' : '' %> class="bg-slate-900">unknown</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-2 space-y-2">
+                    <label for="type" class="block text-sm font-semibold text-slate-300">Tipo / Subclase</label>
+                    <input type="text" name="type" id="type" value="<%= resLocation.type %>"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-green-500/50 focus:border-green-500/50 transition-all" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Location & Origin Section -->
+        <div class="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-sm">
+             <h2 class="text-xl font-bold text-white mb-8 flex items-center">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
+                Origen y Localización
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Origen -->
+                <div class="space-y-6">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 border-b border-white/5 pb-2">Datos de Origen</h3>
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <label for="origin_name" class="block text-xs font-bold text-slate-400 uppercase">Nombre</label>
+                            <input type="text" name="origin_name" id="origin_name" value="<%= resLocation.origin_name %>"
+                                class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/50 transition-all text-sm" />
+                        </div>
+                        <div class="space-y-2">
+                            <label for="origin_url" class="block text-xs font-bold text-slate-400 uppercase">URL Relacionada</label>
+                            <input type="text" name="origin_url" id="origin_url" value="<%= resLocation.origin_url %>"
+                                class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/50 transition-all text-sm font-mono" />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Localización -->
+                <div class="space-y-6">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 border-b border-white/5 pb-2">Localización Actual</h3>
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <label for="location_name" class="block text-xs font-bold text-slate-400 uppercase">Nombre</label>
+                            <input type="text" name="location_name" id="location_name" value="<%= resLocation.location_name %>"
+                                class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-hidden focus:ring-2 focus:ring-purple-500/50 transition-all text-sm" />
+                        </div>
+                        <div class="space-y-2">
+                            <label for="location_url" class="block text-xs font-bold text-slate-400 uppercase">URL Relacionada</label>
+                            <input type="text" name="location_url" id="location_url" value="<%= resLocation.location_url %>"
+                                class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-hidden focus:ring-2 focus:ring-purple-500/50 transition-all text-sm font-mono" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Multimedia & API Section -->
+        <div class="bg-slate-900/50 border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl backdrop-blur-sm">
+            <h2 class="text-xl font-bold text-white mb-8 flex items-center">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
+                Recursos y Metadatos
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="md:col-span-2 space-y-2">
+                    <label for="image" class="block text-sm font-semibold text-slate-300">Imagen del Personaje (URL)</label>
+                    <input type="text" name="image" id="image" value="<%= resLocation.image %>"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-purple-500/50 transition-all font-mono text-sm" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label for="episode" class="block text-sm font-semibold text-slate-300">Lista de Episodios (JSON Array)</label>
+                    <input type="text" name="episode" id="episode" value="<%= resLocation.episode %>"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-slate-500 transition-all font-mono text-sm" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label for="url" class="block text-sm font-semibold text-slate-300">URL Propia de Identidad</label>
+                    <input type="text" name="url" id="url" value="<%= resLocation.url %>"
+                        class="w-full bg-slate-950/50 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-hidden focus:ring-2 focus:ring-slate-500 transition-all font-mono text-sm" />
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-end pt-8">
+            <a href="/api/laboratory" class="px-8 py-4 text-slate-400 font-bold hover:text-white transition-colors flex items-center justify-center">
+                Cancelar
+            </a>
+            <button type="submit" class="group relative px-12 py-4 bg-green-500 text-slate-950 font-bold rounded-xl overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300">
+                <span class="relative z-10">Guardar Cambios</span>
+            </button>
+        </div>
+    </form>
+</div>
